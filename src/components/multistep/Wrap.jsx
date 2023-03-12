@@ -21,8 +21,21 @@ export const MultiStepContext = createContext({});
 
 const Wrap = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [collectedData, setCollectedData] = useState({});
+  const [collectedData, setCollectedData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+    first_name: "",
+    last_name: "",
+    street: "",
+    city: "",
+    postal_code: "",
+    telephone_number: "",
+    coupon: "",
+  });
 
+  console.log(collectedData);
   const onFinish = () => {
     console.log("Reached an end of form");
   };
@@ -48,24 +61,24 @@ const Wrap = () => {
               <InputField resource={"username"} resourceType={"text"} />
               <InputField resource={"email"} resourceType={"email"} />
               <InputField resource={"password"} resourceType={"password"} />
-              <InputField resource={"password confirmation"} resourceType={"password"} />
+              <InputField resource={"password_confirmation"} resourceType={"password"} />
               <Button action={"next step"} type={"submit"} />
             </Form>
           </Part>
-          <Part>
+          <Part name={"address"}>
             <Form>
-              <InputField resource={"first name"} resourceType={"text"} />
-              <InputField resource={"last name"} resourceType={"text"} />
+              <InputField resource={"first_name"} resourceType={"text"} />
+              <InputField resource={"last_name"} resourceType={"text"} />
               <InputField resource={"street"} resourceType={"text"} />
               <InputField resource={"city"} resourceType={"text"} />
-              <InputField resource={"postal code"} resourceType={"number"} />
-              <InputField resource={"telephone number"} resourceType={"tel"} />
+              <InputField resource={"postal_code"} resourceType={"number"} />
+              <InputField resource={"telephone_number"} resourceType={"tel"} />
               <Button action={"next step"} type={"submit"} />
             </Form>
           </Part>
-          <Part>
+          <Part name={"complete order"}>
             <Form>
-              <InputField resource={"card number"} resourceType={"number"} />
+              <InputField resource={"coupon"} resourceType={"number"} />
               <Button action={"complete order"} type={"submit"} />
             </Form>
           </Part>

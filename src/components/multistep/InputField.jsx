@@ -5,6 +5,7 @@ const InputField = ({ resource, resourceType }) => {
   const [error, setError] = useState({ msg: "", error: false });
 
   const { collectedData, setCollectedData } = useContext(MultiStepContext);
+  const placeHolderName = resource.replace("_", " ");
 
   return (
     <div className="form-control">
@@ -12,10 +13,10 @@ const InputField = ({ resource, resourceType }) => {
         {/* <span className="text-warning first-letter:capitalize">This Field needs to be at least 8 chars long.</span> */}
         <input
           type={resourceType}
-          placeholder={`${resource.charAt(0).toUpperCase()}${resource.slice(1)}`}
+          placeholder={`${placeHolderName.charAt(0).toUpperCase()}${placeHolderName.slice(1)}`}
           className="input-bordered input"
           name={resource}
-          value={collectedData.resource}
+          value={collectedData[resource]}
           onChange={e => {
             setCollectedData(prev => ({ ...prev, [resource]: e.target.value }));
           }}
