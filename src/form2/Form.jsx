@@ -3,6 +3,7 @@ import Pages from "./Pages";
 import { useContextHook } from "./context/Context";
 import Button from "./Button";
 import { display } from "./Pages";
+import Steps from "./Steps";
 const Form = () => {
   const { title, collectedData, currentPage, setCurrentPage } = useContextHook();
 
@@ -44,7 +45,8 @@ const Form = () => {
 
   return (
     <div>
-      <h4 className="mb-4 text-xl font-bold capitalize">{title[currentPage]}</h4>
+      <Steps />
+      <h4 className="mb-4 text-center text-xl font-bold capitalize">{title[currentPage]}</h4>
       <Pages />
       <div className="flex">
         {showPrev && <Button action={"prev"} onClick={handlePrev} order={1} disabled={false} />}
